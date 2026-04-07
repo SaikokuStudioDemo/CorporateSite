@@ -1,0 +1,142 @@
+.business-section {
+  background-color: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+  padding-top: 2rem; /* Overviewセクションからシームレスに繋ぐため上部余白を小さめに */
+}
+
+.business-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.biz-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  padding: 2.5rem 2rem;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.biz-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  border-color: var(--color-accent);
+}
+
+.biz-card:hover .biz-link-btn {
+  border-bottom-color: var(--color-accent);
+  gap: 0.75rem;
+}
+
+.biz-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-divider);
+  padding-bottom: 1.5rem;
+}
+
+.biz-logo {
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  /* ロゴのフィルターを解除。もともと明るい場所向けのロゴカラーを使用 */
+}
+
+.biz-title {
+  font-size: 1.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.biz-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+
+.biz-desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  min-height: 7rem; /* 3〜4行分の高さを確保し、後続の「ORIGIN+」「目的」などの開始位置を揃える */
+}
+
+.biz-details {
+  list-style: none;
+  margin-top: auto;
+}
+
+.biz-details li {
+  margin-bottom: 1.5rem;
+}
+
+.biz-details li:last-child {
+  margin-bottom: 0;
+}
+
+.biz-details strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  border-left: 2px solid var(--color-accent);
+  padding-left: 0.5rem;
+}
+
+.biz-details p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.biz-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.biz-link-btn:hover {
+  border-bottom-color: var(--color-accent);
+  gap: 0.75rem;
+}
+
+.biz-card-footer {
+  text-align: center;
+  border-top: 1px dashed var(--color-divider);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pt-8 { padding-top: 2rem; }
+.mt-auto { margin-top: auto; }

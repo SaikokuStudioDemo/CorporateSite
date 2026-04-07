@@ -1,0 +1,79 @@
+.mvv-section {
+  background-color: var(--color-bg);
+  background-image: radial-gradient(circle at center, rgba(196,167,125,0.03) 0%, transparent 60%);
+}
+
+.mvv-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mvv-block {
+  text-align: center;
+  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  border-bottom: 1px dashed var(--color-divider);
+}
+
+.mvv-label {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+}
+
+.mvv-statement {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.6;
+}
+
+.mvv-values {
+  text-align: center;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  text-align: left;
+  margin-top: 3rem;
+}
+
+.value-item {
+  position: relative;
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border-left: 1px solid var(--color-divider);
+}
+
+.value-number {
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  font-size: 3rem;
+  font-family: var(--font-serif);
+  color: var(--color-divider);
+  opacity: 0.5;
+  user-select: none;
+}
+
+.value-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.value-entitle {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.value-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}

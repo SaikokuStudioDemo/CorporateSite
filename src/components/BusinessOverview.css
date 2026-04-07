@@ -1,0 +1,33 @@
+.overview-section {
+  background-color: var(--color-bg);
+  padding-bottom: 2rem; /* Businessセクションへシームレスにつなぐために下余白を少なめに */
+}
+
+.overview-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.overview-intro p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin: 0.5rem 0;
+}
+
+.overview-graphics {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  /* 画像の配置と影 */
+}
+
+.overview-img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  /* 画像自体が背景と馴染んでいる前提なので、とくに影などはつけない（和紙に印刷されているように見せる） */
+  border-radius: 8px;
+  mix-blend-mode: multiply; /* 白背景の画像を和紙に馴染ませる効果（画像が透過PNGなら不要ですが、不透明な白背景画像だった場合に非常に有効です） */
+}
