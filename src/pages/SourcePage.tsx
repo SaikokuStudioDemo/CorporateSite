@@ -1,49 +1,58 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Edit3, FileText, Video, Camera } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Play } from 'lucide-react';
 import './Page.css';
 
-const MEDIA_ITEMS = [
-  {
-    id: 'note',
-    number: '01',
-    title: 'note',
-    desc: '日々の考察や一次情報をベースにしたコラムを配信中。日本の文化や社会構造に関わる深い知見をテキスト主導でお届けします。',
-    icon: <Edit3 size={40} />,
-    color: '#41c9b4',
-    image: 'https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&q=80&w=1200'
+const MAGAZINE_CONTENT = {
+  branding: {
+    logo: '/assets/LOGO-CultureHackJapan.png',
   },
-  {
-    id: 'substack',
-    number: '02',
-    title: 'Substack',
-    desc: 'より深く構造化された知と、ニュースレターをお届けします。時代を読むための手がかりとなる専門的なレポートを定期配信しています。',
-    icon: <FileText size={40} />,
-    color: '#ff6719',
-    image: 'https://images.unsplash.com/photo-1474366521946-c3d4b507abf2?auto=format&fit=crop&q=80&w=1200'
-  },
-  {
-    id: 'youtube',
-    number: '03',
-    title: 'YouTube',
-    desc: '「Culture Hack Japan」として活動中。日本の文化の「いま」を切り取り、長尺のドキュメンタリーやリッチな解説映像として発信しています。',
-    icon: <Video size={40} />,
-    color: '#ff0000',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200'
-  },
-  {
-    id: 'instagram',
-    number: '04',
-    title: 'Instagram',
-    desc: 'ビジュアルを活かした短いクリップや写真を配信。感覚的に捉えられるカルチャーのエッセンスや現場の空気感をショート形式でお届けします。',
-    icon: <Camera size={40} />,
-    color: '#E1306C',
-    image: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&q=80&w=1200'
-  }
-];
+  items: [
+    {
+      id: 'articles',
+      number: '01',
+      category: 'ARTICLES',
+      title: 'The Art of Wa: Contemporary Minimalism',
+      desc: 'noteやSubstackにて、日々の考察や社会構造の分析、専門的なレポートを配信しています。テキスト主導のメディアとして、時代を読むための手がかりをお届けします。',
+      image: '/assets/note_image.png',
+      links: [
+        { label: 'note', url: '#' },
+        { label: 'Substack', url: '#' }
+      ]
+    },
+    {
+      id: 'youtube',
+      number: '02',
+      category: 'YOUTUBE',
+      title: 'Journeys Through Kyoto: Ancient & Modern',
+      desc: '「Culture Hack Japan」として活動中。日本の文化の「いま」を切り取り、長尺のドキュメンタリーやリッチな解説映像として発信しています。',
+      image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=1200',
+      links: [
+        { label: 'YouTube', url: '#' }
+      ]
+    },
+    {
+      id: 'instagram',
+      number: '03',
+      category: 'INSTAGRAM',
+      title: 'Exploring Imperfection',
+      desc: 'ビジュアルを活かした短いクリップや写真を配信。感覚的に捉えられるカルチャーのエッセンスや現場の空気感をショート形式でお届けします。',
+      image: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&q=80&w=1200',
+      links: [
+        { label: 'Instagram', url: '#' }
+      ]
+    }
+  ]
+};
 
 export default function SourcePage() {
-  const [activeItem, setActiveItem] = useState(MEDIA_ITEMS[0]);
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.1, duration: 0.8 }
+    })
+  };
 
   return (
     <main className="page-main">
@@ -62,112 +71,122 @@ export default function SourcePage() {
 
       <div className="page-content container">
         
-        {/* Editorial Intro Section (Minimalist) */}
-        {/* 他のページに影響が出ないようインラインで余白を上書きし、上部余白を詰める */}
-        <section className="editorial-intro" style={{ textAlign: 'center', margin: '1rem 0 7rem 0' }}>
+        {/* Editorial Section Header */}
+        <section className="magazine-intro-area">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center', 
-              gap: '3rem',
-              flexWrap: 'wrap'
-            }}
+            custom={0}
+            variants={fadeInUp}
+            className="magazine-branding-wrap"
           >
             <img 
-              src="/assets/LOGO-ORIGINplus.png" 
-              alt="ORIGIN+" 
-              style={{ height: '12rem', objectFit: 'contain', opacity: 0.9 }} 
+              src={MAGAZINE_CONTENT.branding.logo} 
+              alt="Culture Hack Japan" 
+              className="magazine-chj-logo"
+              onError={(e) => {
+                // Fallback if logo not found yet
+                e.currentTarget.style.display = 'none';
+              }}
             />
-            <div style={{ fontSize: '2rem', color: 'var(--color-text-muted)', fontWeight: 300 }}>
-              ✕
+            <div className="magazine-origin-rs">
+              <img src="/assets/LOGO-ORIGINplus.png" alt="ORIGIN+" />
+              <span>✕</span>
+              <img src="/assets/LOGO-RSplus.png" alt="RS+" />
             </div>
-            <img 
-              src="/assets/LOGO-RSplus.png" 
-              alt="RS+" 
-              style={{ height: '12rem', objectFit: 'contain', opacity: 0.9 }} 
-            />
+            <p className="magazine-tagline">
+              一次情報を元に、様々な角度から現代と歴史をつなぐ情報を配信しています。
+            </p>
           </motion.div>
-          
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 1 }}
-            style={{ 
-              marginTop: '2.5rem', 
-              fontSize: '1.15rem', 
-              color: 'var(--color-text-muted)', 
-              letterSpacing: '0.15em',
-              fontWeight: 600
-            }}
-          >
-            2つの知性を束ね、社会へ還流させるメディア・プラットフォーム
-          </motion.p>
         </section>
 
-        {/* Dynamic Hover Index Section */}
-        <section className="hover-index-container">
+        {/* Magazine Grid Layout */}
+        <section className="magazine-grid">
           
-          {/* Left: List */}
-          <div className="hover-index-list">
-            {MEDIA_ITEMS.map((item) => (
-              <a 
-                key={item.id}
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`hover-index-item ${activeItem.id === item.id ? 'active' : ''}`}
-                onMouseEnter={() => setActiveItem(item)}
-              >
-                <div className="hover-index-number">{item.number}</div>
-                <h3 className="hover-index-title">
-                  {item.icon} {item.title}
-                </h3>
-                <p className="hover-index-desc">
-                  {item.desc}
-                </p>
-                <ExternalLink size={28} className="hover-index-external" />
-              </a>
-            ))}
-          </div>
+          {/* Card 01: Articles (Large Horizontal) */}
+          <motion.div 
+            className="mag-card mag-card-articles"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={1}
+            variants={fadeInUp}
+          >
+            <div className="mag-card-inner">
+              <div className="mag-card-content">
+                <span className="mag-card-number">{MAGAZINE_CONTENT.items[0].number}</span>
+                <span className="mag-card-category">{MAGAZINE_CONTENT.items[0].category}</span>
+                <h3 className="mag-card-title">{MAGAZINE_CONTENT.items[0].title}</h3>
+                <p className="mag-card-desc">{MAGAZINE_CONTENT.items[0].desc}</p>
+                <div className="mag-card-links">
+                  {MAGAZINE_CONTENT.items[0].links.map((link, idx) => (
+                    <a key={idx} href={link.url} className="mag-link-btn">
+                      {link.label} <ArrowRight size={14} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className="mag-card-image" style={{ backgroundImage: `url(${MAGAZINE_CONTENT.items[0].image})` }}>
+                <div className="mag-image-overlay" />
+              </div>
+            </div>
+          </motion.div>
 
-          {/* Right: Dynamic Image Display */}
-          <div className="hover-index-image-wrapper">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeItem.id}
-                src={activeItem.image}
-                alt={activeItem.title}
-                className="hover-index-image"
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-              />
-            </AnimatePresence>
-            
-            {/* 色のオーバーレイ (任意) */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`${activeItem.id}-overlay`}
-                style={{
-                  position: 'absolute',
-                  top: 0, left: 0, right: 0, bottom: 0,
-                  background: `linear-gradient(to top, rgba(0,0,0,0.4), transparent)`,
-                  borderBottom: `8px solid ${activeItem.color}`
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
-              />
-            </AnimatePresence>
-          </div>
+          {/* Card 02: YouTube (Tall Vertical) */}
+          <motion.div 
+            className="mag-card mag-card-youtube"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={2}
+            variants={fadeInUp}
+          >
+            <div className="mag-card-inner">
+              <div className="mag-card-image" style={{ backgroundImage: `url(${MAGAZINE_CONTENT.items[1].image})` }}>
+                <div className="mag-video-play">
+                  <Play fill="white" size={32} />
+                </div>
+                <div className="mag-image-overlay" />
+                <div className="mag-card-image-content">
+                  <span className="mag-card-category">{MAGAZINE_CONTENT.items[1].category}</span>
+                  <h3 className="mag-card-title">{MAGAZINE_CONTENT.items[1].title}</h3>
+                  <div className="mag-card-links">
+                    <a href={MAGAZINE_CONTENT.items[1].links[0].url} className="mag-link-btn white">
+                      {MAGAZINE_CONTENT.items[1].links[0].label} <ArrowRight size={14} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 03: Instagram (Square/Wide) */}
+          <motion.div 
+            className="mag-card mag-card-instagram"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={3}
+            variants={fadeInUp}
+          >
+            <div className="mag-card-inner">
+              <div className="mag-card-content">
+                <span className="mag-card-number">{MAGAZINE_CONTENT.items[2].number}</span>
+                <span className="mag-card-category">{MAGAZINE_CONTENT.items[2].category}</span>
+                <h3 className="mag-card-title">{MAGAZINE_CONTENT.items[2].title}</h3>
+                <p className="mag-card-desc">{MAGAZINE_CONTENT.items[2].desc}</p>
+                <div className="mag-card-links">
+                  <a href={MAGAZINE_CONTENT.items[2].links[0].url} className="mag-link-btn">
+                    {MAGAZINE_CONTENT.items[2].links[0].label} <ArrowRight size={14} />
+                  </a>
+                </div>
+              </div>
+              <div className="mag-card-image" style={{ backgroundImage: `url(${MAGAZINE_CONTENT.items[2].image})` }}>
+                <div className="mag-image-overlay" />
+              </div>
+            </div>
+          </motion.div>
 
         </section>
 
