@@ -20,7 +20,7 @@ export default function Company() {
               </tr>
               <tr>
                 <th>所在地</th>
-                <td>〒000-0000 東京都千代田区（※仮）</td>
+                <td>東京都武蔵野市吉祥寺南町3-14-8 零</td>
               </tr>
               <tr>
                 <th>事業内容</th>

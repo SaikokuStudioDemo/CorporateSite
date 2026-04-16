@@ -8,7 +8,7 @@ export default function BusinessOverview() {
   };
 
   return (
-    <section className="section overview-section" id="business-overview">
+    <section className="section overview-section" id="business">
       <div className="container">
         <motion.div 
           className="overview-header"

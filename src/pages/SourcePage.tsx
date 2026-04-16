@@ -1,48 +1,28 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import ArticleCardStream from '../components/ArticleCardStream';
 import './Page.css';
 
-const MAGAZINE_CONTENT = {
-  branding: {
-    logo: '/assets/LOGO-CultureHackJapan.png',
-  },
-  items: [
-    {
-      id: 'articles',
-      number: '01',
-      category: 'ARTICLES',
-      title: 'The Art of Wa: Contemporary Minimalism',
-      desc: 'noteやSubstackにて、日々の考察や社会構造の分析、専門的なレポートを配信しています。テキスト主導のメディアとして、時代を読むための手がかりをお届けします。',
-      image: '/assets/note_image.png',
-      links: [
-        { label: 'note', url: '#' },
-        { label: 'Substack', url: '#' }
-      ]
-    },
-    {
-      id: 'youtube',
-      number: '02',
-      category: 'YOUTUBE',
-      title: 'Journeys Through Kyoto: Ancient & Modern',
-      desc: '「Culture Hack Japan」として活動中。日本の文化の「いま」を切り取り、長尺のドキュメンタリーやリッチな解説映像として発信しています。',
-      image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=1200',
-      links: [
-        { label: 'YouTube', url: '#' }
-      ]
-    },
-    {
-      id: 'instagram',
-      number: '03',
-      category: 'INSTAGRAM',
-      title: 'Exploring Imperfection',
-      desc: 'ビジュアルを活かした短いクリップや写真を配信。感覚的に捉えられるカルチャーのエッセンスや現場の空気感をショート形式でお届けします。',
-      image: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&q=80&w=1200',
-      links: [
-        { label: 'Instagram', url: '#' }
-      ]
-    }
-  ]
-};
+const YouTubeLogo = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+);
+
+const InstagramLogo = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </svg>
+);
+
+const SubstackLogo = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+    <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+  </svg>
+);
+
+const NoteLogo = () => (
+  <span style={{ fontWeight: 800, fontFamily: 'Helvetica, Arial, sans-serif', letterSpacing: '-0.07em', fontSize: '24px', lineHeight: 1 }}>note</span>
+);
 
 export default function SourcePage() {
   const fadeInUp = {
@@ -55,10 +35,11 @@ export default function SourcePage() {
   };
 
   return (
+
     <main className="page-main">
       <div className="page-header" style={{ backgroundImage: 'url(/assets/hero-bg.png)' }}>
         <div className="page-header-overlay"></div>
-        <motion.div 
+        <motion.div
           className="page-header-content"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,10 +51,10 @@ export default function SourcePage() {
       </div>
 
       <div className="page-content container">
-        
+
         {/* Editorial Section Header */}
         <section className="magazine-intro-area">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -81,12 +62,11 @@ export default function SourcePage() {
             variants={fadeInUp}
             className="magazine-branding-wrap"
           >
-            <img 
-              src={MAGAZINE_CONTENT.branding.logo} 
-              alt="Culture Hack Japan" 
+            <img
+              src="/assets/LOGO-CultureHackJapan.png"
+              alt="Culture Hack Japan"
               className="magazine-chj-logo"
               onError={(e) => {
-                // Fallback if logo not found yet
                 e.currentTarget.style.display = 'none';
               }}
             />
@@ -95,99 +75,52 @@ export default function SourcePage() {
               <span>✕</span>
               <img src="/assets/LOGO-RSplus.png" alt="RS+" />
             </div>
-            <p className="magazine-tagline">
-              一次情報を元に、様々な角度から現代と歴史をつなぐ情報を配信しています。
-            </p>
+            <div className="magazine-concept-area">
+              <p className="magazine-tagline-lead">
+                一次情報を紐解き、様々な角度から日本の価値観を可視化し、共に考えるメディア。
+              </p>
+              <div className="magazine-tagline-flow">
+                <span className="flow-step">現代の問い</span>
+                <span className="flow-line"></span>
+                <span className="flow-step">歴史の根拠</span>
+                <span className="flow-line"></span>
+                <span className="flow-step">現代への接続</span>
+              </div>
+              <p className="magazine-tagline-sub">
+                過去の知恵をもとに、<br className="mobile-br"/>現在まで続く日本の文化を国内外へ配信しています。
+              </p>
+            </div>
           </motion.div>
         </section>
 
-        {/* Magazine Grid Layout */}
-        <section className="magazine-grid">
-          
-          {/* Card 01: Articles (Large Horizontal) */}
-          <motion.div 
-            className="mag-card mag-card-articles"
+        <ArticleCardStream />
+
+        {/* Official Platforms Links */}
+        <section style={{ marginTop: '2rem', paddingBottom: '6rem', display: 'flex', justifyContent: 'center' }}>
+          <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
+            variants={fadeInUp}
             custom={1}
-            variants={fadeInUp}
+            className="media-platforms-container"
           >
-            <div className="mag-card-inner">
-              <div className="mag-card-content">
-                <span className="mag-card-number">{MAGAZINE_CONTENT.items[0].number}</span>
-                <span className="mag-card-category">{MAGAZINE_CONTENT.items[0].category}</span>
-                <h3 className="mag-card-title">{MAGAZINE_CONTENT.items[0].title}</h3>
-                <p className="mag-card-desc">{MAGAZINE_CONTENT.items[0].desc}</p>
-                <div className="mag-card-links">
-                  {MAGAZINE_CONTENT.items[0].links.map((link, idx) => (
-                    <a key={idx} href={link.url} className="mag-link-btn">
-                      {link.label} <ArrowRight size={14} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div className="mag-card-image" style={{ backgroundImage: `url(${MAGAZINE_CONTENT.items[0].image})` }}>
-                <div className="mag-image-overlay" />
-              </div>
+            <div className="media-platforms-title">PLATFORMS</div>
+            <div className="media-platforms-links">
+              <a href="#" className="media-brand-link" aria-label="note">
+                <NoteLogo />
+              </a>
+              <a href="#" className="media-brand-link" aria-label="Substack">
+                <SubstackLogo />
+              </a>
+              <a href="#" className="media-brand-link" aria-label="YouTube">
+                <YouTubeLogo />
+              </a>
+              <a href="#" className="media-brand-link" aria-label="Instagram">
+                <InstagramLogo />
+              </a>
             </div>
           </motion.div>
-
-          {/* Card 02: YouTube (Tall Vertical) */}
-          <motion.div 
-            className="mag-card mag-card-youtube"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={2}
-            variants={fadeInUp}
-          >
-            <div className="mag-card-inner">
-              <div className="mag-card-image" style={{ backgroundImage: `url(${MAGAZINE_CONTENT.items[1].image})` }}>
-                <div className="mag-video-play">
-                  <Play fill="white" size={32} />
-                </div>
-                <div className="mag-image-overlay" />
-                <div className="mag-card-image-content">
-                  <span className="mag-card-category">{MAGAZINE_CONTENT.items[1].category}</span>
-                  <h3 className="mag-card-title">{MAGAZINE_CONTENT.items[1].title}</h3>
-                  <div className="mag-card-links">
-                    <a href={MAGAZINE_CONTENT.items[1].links[0].url} className="mag-link-btn white">
-                      {MAGAZINE_CONTENT.items[1].links[0].label} <ArrowRight size={14} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Card 03: Instagram (Square/Wide) */}
-          <motion.div 
-            className="mag-card mag-card-instagram"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={3}
-            variants={fadeInUp}
-          >
-            <div className="mag-card-inner">
-              <div className="mag-card-content">
-                <span className="mag-card-number">{MAGAZINE_CONTENT.items[2].number}</span>
-                <span className="mag-card-category">{MAGAZINE_CONTENT.items[2].category}</span>
-                <h3 className="mag-card-title">{MAGAZINE_CONTENT.items[2].title}</h3>
-                <p className="mag-card-desc">{MAGAZINE_CONTENT.items[2].desc}</p>
-                <div className="mag-card-links">
-                  <a href={MAGAZINE_CONTENT.items[2].links[0].url} className="mag-link-btn">
-                    {MAGAZINE_CONTENT.items[2].links[0].label} <ArrowRight size={14} />
-                  </a>
-                </div>
-              </div>
-              <div className="mag-card-image" style={{ backgroundImage: `url(${MAGAZINE_CONTENT.items[2].image})` }}>
-                <div className="mag-image-overlay" />
-              </div>
-            </div>
-          </motion.div>
-
         </section>
 
       </div>

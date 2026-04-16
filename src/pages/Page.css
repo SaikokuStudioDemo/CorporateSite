@@ -233,23 +233,75 @@
   font-weight: 300;
 }
 
-.magazine-tagline {
-  margin-top: 3rem;
+/* Magazine Tagline layout */
+.magazine-concept-area {
+  margin-top: 3.5rem;
+}
+
+.magazine-tagline-lead {
   font-family: var(--font-serif);
   font-size: 1.15rem;
   color: var(--color-text-muted);
   letter-spacing: 0.15em;
   font-weight: 600;
+  text-align: center;
   white-space: nowrap;
 }
 
+.magazine-tagline-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.flow-step {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+}
+
+.flow-line {
+  height: 1px;
+  width: 40px;
+  background-color: var(--color-divider);
+}
+
+.magazine-tagline-sub {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
-  .magazine-tagline {
-    white-space: normal;
+  .magazine-tagline-flow {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .flow-line {
+    width: 1px;
+    height: 20px;
+  }
+  .magazine-tagline-lead {
     font-size: 1rem;
-    line-height: 1.8;
+    white-space: normal;
+    line-height: 1.6;
+  }
+  .magazine-tagline-sub {
+    font-size: 0.95rem;
+  }
+  .mobile-br {
+    display: none;
   }
 }
+
 
 /* Grid System */
 .magazine-grid {
@@ -461,4 +513,45 @@
   .mag-card-title {
     font-size: 1.6rem;
   }
+}
+
+/* =========================================================================
+   Official Platforms Links Section (SOURCE+)
+========================================================================== */
+.media-platforms-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.media-platforms-title {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--color-text-muted);
+  border-bottom: 0.5px solid var(--color-divider);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.media-platforms-links {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.media-brand-link {
+  color: var(--color-text-muted);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.media-brand-link:hover {
+  color: var(--color-accent);
+  transform: translateY(-4px);
 }

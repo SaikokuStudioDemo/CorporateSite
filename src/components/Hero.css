@@ -49,8 +49,7 @@
 .hero-subcopy {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.8;
-  color: var(--color-text-muted);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  color: var(--color-text);
 }
 
 .scroll-indicator {
