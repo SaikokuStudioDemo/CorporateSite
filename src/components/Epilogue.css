@@ -1,0 +1,89 @@
+.epilogue-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.epilogue-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2d2629; /* Deep plum fade target */
+  z-index: 1;
+}
+
+.epilogue-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+}
+
+
+
+.epilogue-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.epilogue-logo {
+  height: 6rem;
+  margin-bottom: 5rem;
+  object-fit: contain;
+  opacity: 1; /* Removed opacity reduction */
+}
+
+.epilogue-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  letter-spacing: 0.2em;
+  color: #ffffff; /* White text for contrast */
+  margin-bottom: 4rem;
+  font-weight: 300;
+}
+
+.epilogue-text {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 2.4;
+  color: #b3b3b3; /* Light muted text */
+  letter-spacing: 0.15em;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .epilogue-section {
+    min-height: 60vh;
+    padding: 6rem 1.5rem;
+  }
+  
+  .epilogue-logo {
+    height: 4rem;
+    margin-bottom: 4rem;
+  }
+  
+  .epilogue-title {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+  
+  .epilogue-text {
+    font-size: 0.95rem;
+    text-align: left;
+    gap: 2rem;
+  }
+}
